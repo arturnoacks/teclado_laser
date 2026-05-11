@@ -320,9 +320,12 @@ void loop() {
   //     }
   // } 
 /////////////////MIDI
-    SerialMEGA.write("oierr");
+    if(SerialMEGA.available()) {
+      char c = (char)SerialMEGA.read();
+      Serial.print(c);
+    }
 
-    Serial.println(digitalRead(A2));
+    //Serial.println(digitalRead(A2));
     
     int stateAtual = 1 ? digitalRead(A2) == LOW : 0;
     if(state != stateAtual){

@@ -1,5 +1,11 @@
 #include <Arduino.h>
 
+typedef struct _tMIDI
+{
+    byte cmd, data1, data2;
+}tMIDI;
+
+
 
 void setup(){
     Serial.begin(9600);
@@ -8,7 +14,6 @@ void setup(){
 
 
 void loop(){
-    if(Serial1.available()){
-        Serial.println(Serial1.readString());
-    }
+    delay(1000);
+    Serial1.write("tchaur\n");
 }
