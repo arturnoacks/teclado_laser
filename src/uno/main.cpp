@@ -320,9 +320,12 @@ void loop() {
   //     }
   // } 
 /////////////////MIDI
-    if(SerialMEGA.available()) {
-      char c = (char)SerialMEGA.read();
-      Serial.print(c);
+  byte midi[3];
+    if(SerialMEGA.available() >= 3) {
+      for(int i = 0; i < 3; i++) {
+        midi[i] = SerialMEGA.read();
+      }
+      talkMIDI(midi[0], midi[1], midi[2]);
     }
 
     //Serial.println(digitalRead(A2));
