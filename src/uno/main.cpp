@@ -330,12 +330,12 @@ void loop() {
 
     //Serial.println(digitalRead(A2));
     
-    int stateAtual = 1 ? digitalRead(A2) == LOW : 0;
+    /* int stateAtual = 1 ? digitalRead(A2) == LOW : 0;
     if(state != stateAtual){
       state = 1 - state;
       if (state == 1) talkMIDI(0x90, 60, 127);
       else talkMIDI(0x80, 60, 127);
-    }
+    } */
 
     // byte ch = MIDI.getChannel();
     // uint16_t ch_filter = 1<<(ch-1);  // bit numbers are 0 to 15; channels are 1 to 16
