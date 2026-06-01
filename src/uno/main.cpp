@@ -285,6 +285,13 @@ void setup() {
 
 void loop() {
 
+  byte midi[3];
+    if(SerialMEGA.available() >= 3) {
+      for(int i = 0; i < 3; i++) {
+        midi[i] = SerialMEGA.read();
+      }
+      talkMIDI(midi[0], midi[1], midi[2]);
+    }
   // put your main code here, to run repeatedly:
 
   // Read the potentiometer for a value between 0 and 127
@@ -320,13 +327,6 @@ void loop() {
   //     }
   // } 
 /////////////////MIDI
-  byte midi[3];
-    if(SerialMEGA.available() >= 3) {
-      for(int i = 0; i < 3; i++) {
-        midi[i] = SerialMEGA.read();
-      }
-      talkMIDI(midi[0], midi[1], midi[2]);
-    }
 
     //Serial.println(digitalRead(A2));
     

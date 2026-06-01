@@ -1,11 +1,6 @@
 #include "encoder.hpp"
 
 //////////////////// instrument and octave
-volatile int current_instrument = 0;
-int lastInstrument = 0;
-volatile int octaveOffset = 0;     // e.g., -2, -1, 0, +1, +2
-int lastOctaveOffset = 0;
-
 int lastClkState;
 unsigned long last_encoder_press = 0;
 unsigned long last_encoder_rotation = 0;
@@ -36,14 +31,6 @@ void handle_encoder_press(){
         Serial.print("Ja muda, agora é ");
         Serial.println(modo);
     }
-
-    // if (instrument_mode) {
-    //     // INSTRUMENT MODE
-    //     if (current_instrument != lastInstrument) {
-    //         setInstrument(current_instrument);
-    //         lastInstrument = current_instrument;
-    //     }
-    // }
 }
 
 void read_encoder(){
