@@ -1,4 +1,3 @@
-#include <ESP8266WiFi.h>
 #include <WiFi.h>
 #include <WebSocketsServer.h>
 
@@ -25,10 +24,14 @@ void webSocketEvent(uint8_t num, WStype_t type, uint8_t * payload, size_t length
 void setup() {
     Serial.begin(115200);
 
+    Serial.print("Conectando ao WiFi: ");
+    Serial.print(ssid);
+
     WiFi.begin(ssid, password);
 
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
+        Serial.println("Tentando conectar");
     }
 
     Serial.println();
