@@ -16,6 +16,10 @@ void encoder_setup();
 
 void handle_encoder_press();
 
+void send_to_esp();
+
+void receive_from_esp();
+
 void read_encoder();
 
 int get_octave();
