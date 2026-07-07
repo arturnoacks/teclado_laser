@@ -1,44 +1,16 @@
-"use client"
-
-import React, { useState, useEffect, useRef } from 'react';
 
 interface ControleProps {
     instrumentos: Record<string, string>;
+    volume: number;
+    setVolume: React.Dispatch<React.SetStateAction<number>>;
+    instrumento: number;
+    setInstrumento: React.Dispatch<React.SetStateAction<number>>;
+    oitava: number;
+    setOitava: React.Dispatch<React.SetStateAction<number>>;
+    sendToESP: (v:number, i:number, o:number)=>void;
 }
 
-export default function Controle({ instrumentos }: ControleProps) {
-
-    const [volume, setVolume] = useState<number>(63);
-    const [instrumento, setInstrumento] = useState<number>(0);
-    const [oitava, setOitava] = useState<number>(0);
-
-    const ws = useRef<WebSocket | null>(null);
-
-    useEffect(() => {
-        const ESP_IP = "ESP_IP"; 
-        const socket = new WebSocket(`ws://${ESP_IP}:81`);
-
-        ws.current = socket;
-
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-
-            if (data.v !== undefined) setVolume(data.v);
-            if (data.i !== undefined) setInstrumento(data.i);
-            if (data.o !== undefined) setOitava(data.o);
-        };
-
-        return () => {
-            if (socket) socket.close();
-        }
-    }, []);
-
-    const sendToESP = (v: number, i: number, o: number) => {
-        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
-            const jsonStr = JSON.stringify({ v, i, o });
-            ws.current.send(jsonStr);
-        }
-    };
+export default function Controle({ instrumentos, volume, setVolume, instrumento, setInstrumento, oitava, setOitava, sendToESP }: ControleProps) {
 
     const handleInstrumentoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const novoInstrumento = Number(e.target.value);
@@ -57,6 +29,7 @@ export default function Controle({ instrumentos }: ControleProps) {
 
     const handleVolumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const novoVolume = Number(e.target.value);
+
         setVolume(novoVolume);
         sendToESP(novoVolume, instrumento, oitava);
     };

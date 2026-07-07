@@ -1,39 +1,9 @@
-"use client";
 
-import React, { useEffect, useState, useRef } from 'react';
+interface TecladoProps{
+    notasAtivas: number[];
+}
 
-export default function Teclado() {
-
-    const [notasAtivas, setNotasAtivas] = useState<number[]>([]);
-    const ws = useRef<WebSocket | null>(null);
-
-    useEffect(() => {
-        const ESP_IP = "ESP_IP"; 
-        const socket = new WebSocket(`ws://${ESP_IP}:81`);
-
-        ws.current = socket;
-
-        socket.onmessage = (event) => {
-            const data = JSON.parse(event.data);
-            
-            if (data.n !== undefined && data.s !== undefined) {
-                const nota = data.n;
-                const status = data.s;
-
-                setNotasAtivas(prev => {
-                    if (status === 1) {
-                        return prev.includes(nota) ? prev : [...prev, nota];
-                    } else {
-                        return prev.filter(n => n !== nota);
-                    }
-                });
-            }
-        };
-
-        return () => {
-            if (ws.current) ws.current.close();
-        };
-    }, []);
+export default function Teclado({ notasAtivas }:TecladoProps) {
 
     const teclas = [
         // Oitava 1
