@@ -8,9 +8,10 @@
 #define OFF 1
 
 //////////////// notes
+byte pin_to_note_array[24] = {60, 58, 62, 56, 64, 54, 61, 59, 63, 57, 65, 55, 67, 53, 69, 51, 71, 49, 66, 52, 68, 50, 70, 48};
 byte note_status[24];
 byte pin_to_note(uint8_t pin){
-    return constrain(int(pin + 26 + (get_octave() * 12)), 0, 127);
+    return constrain(int(pin_to_note_array[pin-22] + (get_octave() * 12)), 0, 127);
 }
 
 

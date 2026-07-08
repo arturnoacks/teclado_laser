@@ -19,7 +19,7 @@ export default function Home() {
     const [notasAtivas, setNotasAtivas] = useState<number[]>([]);
 
     useEffect(() => {
-        const ESP_IP = "ESP_IP"; 
+        const ESP_IP = "10.187.201.1"; 
         const socket = new WebSocket(`ws://${ESP_IP}:81`);
 
         ws.current = socket;

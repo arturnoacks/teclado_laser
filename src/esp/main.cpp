@@ -5,8 +5,8 @@
 #define TXD2 17
 
 // Configurações de rede
-const char* ssid = "";
-const char* password = "";
+const char* ssid = "POCO HEITOR";
+const char* password = "11111111";
 
 // Inicia o servidor WebSocket na porta 81
 WebSocketsServer webSocket = WebSocketsServer(81);

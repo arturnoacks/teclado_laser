@@ -38,7 +38,7 @@ export default function Teclado({ notasAtivas }:TecladoProps) {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="1598" height="523" viewBox="0 0 1598 523" fill="none">
             {teclas.map((tecla, index) => {
-                const numeroNota = 26 + index; 
+                const numeroNota = 48 + index; 
                 
                 const isAtiva = notasAtivas.includes(numeroNota);
 
