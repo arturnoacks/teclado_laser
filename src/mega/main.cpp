@@ -8,12 +8,11 @@
 #define OFF 1
 
 //////////////// notes
-byte pin_to_note_array[24] = {60, 58, 62, 56, 64, 54, 61, 59, 63, 57, 65, 55, 67, 53, 69, 51, 71, 49, 66, 52, 68, 50, 70, 48};
+byte pin_to_note_array[24] = {60, 58, 62, 56, 64, 54, 61, 59, 63, 57, 65, 55, 67, 53, 69, 51, 71, 49, 66, 50, 68, 52, 70, 48};
 byte note_status[24];
 byte pin_to_note(uint8_t pin){
     return constrain(int(pin_to_note_array[pin-22] + (get_octave() * 12)), 0, 127);
 }
-
 
 void setup(){
     Serial.begin(9600);
@@ -43,7 +42,7 @@ void loop(){
             note_status[i] = 1 - note_status[i];
 
             String jsonNota = "{\"n\":";
-            jsonNota += note;
+            jsonNota += (note%24) + 48;
             jsonNota += ",\"s\":";
             
             if(note_status[i] == ON){
