@@ -3,7 +3,7 @@
 - Projeto Integrado de Computação II - INF16193/ELE16194
 - Artur Noack de Souza, Eduarda Tonini Ferri, Heitor Pinheiro Sousa e Luiz Gabriel Figueiredo Carvalho
 
-O projeto consiste em um teclado multi-instrumental cujo acionamento das teclas ocorre ao interromper um feixe *laser*. De modo geral, o sistema de acionamento pode ser resumido em um conjunto de 24 circuitos emissor comum, que são chaveados de acordo com a resistência de cada LDR (inicialmente saturados pela luz dos *lasers*). Os sinais de saída são recebidos pelo Arduino Mega, que se comunica com o Arduino Uno e o VS1053 para gerar uma saída de áudio via porta P2. Parâmetros diversos como volume e instrumento podem ser visualizados e manipulados por meio de uma interface *web*. Adicionalmente, um *encoder* rotativo também pode alterar esses parâmetros.
+O projeto consiste em um teclado multi-instrumental cujo acionamento das teclas ocorre ao interromper um feixe *laser*. De modo geral, o sistema de acionamento pode ser resumido em um conjunto de 24 circuitos emissor comum, que são chaveados de acordo com a resistência de cada LDR (inicialmente saturados pela luz dos *lasers*). Os sinais de saída são recebidos pelo Arduino Mega, que se comunica com o Arduino Uno e o VS1053 para gerar uma saída de áudio via porta P2. Parâmetros diversos como volume e instrumento podem ser visualizados e manipulados por meio de uma interface *web* gerenciada por um ESP32. Adicionalmente, um *encoder* rotativo também pode alterar esses parâmetros.
 
 ## Descrição do código
 
