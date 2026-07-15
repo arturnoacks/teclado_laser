@@ -1,10 +1,34 @@
+
 # Teclado Laser Multi-Instrumental
 - Projeto Integrado de Computação II - INF16193/ELE16194
 - Artur Noack de Souza, Eduarda Tonini Ferri, Heitor Pinheiro Sousa e Luiz Gabriel Figueiredo Carvalho
 
+O projeto consiste em um teclado multi-instrumental cujo acionamento das teclas ocorre ao interromper um feixe *laser*. De modo geral, o sistema de acionamento pode ser resumido em um conjunto de 24 circuitos emissor comum, que são chaveados de acordo com a resistência de cada LDR (inicialmente saturados pela luz dos *lasers*). Os sinais de saída são recebidos pelo Arduino Mega, que se comunica com o Arduino Uno e o VS1053 para gerar uma saída de áudio via porta P2. Parâmetros diversos como volume e instrumento podem ser visualizados e manipulados por meio de uma interface *web*. Adicionalmente, um *encoder* rotativo também pode alterar esses parâmetros.
+
 ## Descrição do código
 
 ## Descrição do material
+
+### Lista de materiais:
+- **Micro Controladores:**
+	 - Arduino Mega 2560
+	 - Arduino Uno
+	 - ESP32
+	 - Shield Arduino VS1053
+ - **Componentes Eletrônicos:**
+	 - 24 Módulos Diodo Laser 5V
+	 - 24 Resistores X, Y
+	 - 24 Transistores BC547
+	 - 24 LDR 5mm
+	 - 1 Encoder Rotativo
+ - **Impressões 3D:**
+	 - Suportes para carcaça, *encoder* e *lasers*
+	 - Proteção para LDRs
+- **Outros Materiais:**
+	- 4 Placas Fenolite Cobreada
+	- 1 Placa Fenolite Perfurada
+	- Fios e Jumpers Diversos
+	- Carcaça de Madeira
 
 ## Modelos 3D (e MDF)
 O primeiro modelo feito foi a caixa do piano, que, como seria feita em MDF, foi desenhada no *software* de CAD 2D QCAD. Após confecção desse modelo, ele foi enviado para uma loja de artigos em MDF que produziu grande parte da caixa corretamente, mas houveram algumas adaptações feitas pela loja para facilitar a produção da caixa. Isso fez com que algumas medidas do teclado ao final não sejam condizentes com o modelo do QCAD, mas ainda servem de referência.
