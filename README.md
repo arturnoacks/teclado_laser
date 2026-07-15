@@ -7,6 +7,79 @@ O projeto consiste em um teclado multi-instrumental cujo acionamento das teclas 
 
 ## Descrição do código
 
+O projeto é dividido em duas partes principais:
+
+* **Hardware**: executado nos microcontroladores (Arduino Mega, Arduino Uno e ESP32), responsável pela leitura das teclas, geração do áudio MIDI e comunicação com a interface web.
+* **Software**: aplicação responsável pela interface do usuário, permitindo controlar parâmetros do teclado e visualizar, em tempo real, as teclas pressionadas.
+
+### Hardware
+
+#### Arduino Mega
+
+O Arduino Mega é o controlador principal do sistema.
+
+Suas responsabilidades são:
+
+* realizar a leitura das 24 teclas do teclado laser;
+* detectar eventos de Note ON e Note OFF;
+* converter cada sensor na respectiva nota MIDI;
+* aplicar o deslocamento de oitava selecionado;
+* enviar comandos MIDI para o Arduino Uno;
+* controlar o encoder rotativo para alteração de volume, instrumento e oitava;
+* comunicar-se com a ESP32 através da interface Serial2 utilizando mensagens JSON.
+
+#### Arduino Uno + MIDI Shield
+
+O Arduino Uno é responsável exclusivamente pela geração do áudio.
+
+* inicializa o VS1053 em modo Real-Time MIDI;
+* recebe os comandos MIDI enviados pelo Arduino Mega através da comunicação serial;
+* encaminha esses comandos ao VS1053 via interface SPI;
+* reproduz o áudio correspondente ao instrumento e nota selecionados.
+
+#### ESP32
+
+A ESP32 realiza a comunicação entre o hardware e a interface web. Ela conecta-se à rede Wi-Fi, hospeda um servidor WebSocket e faz a troca de mensagens entre o Arduino Mega e a aplicação web. Assim, alterações realizadas na interface são enviadas ao hardware, enquanto os eventos gerados pelo teclado e pelo encoder são transmitidos em tempo real para a interface.
+
+#### Como executar
+
+Carregue cada código na placa correspondente. Antes de fazer upload na ESP32, configure as credenciais da rede Wi-Fi:
+
+```
+const char* ssid = "SEU_WIFI";
+const char* password = "SUA_SENHA";
+```
+
+Após a inicialização, a ESP32 exibirá no monitor serial o seu endereço IP.
+
+### Software
+
+#### Interface web
+
+A interface web permite controlar os principais parâmetros do teclado, como volume, instrumento e oitava, além de exibir, em tempo real, as teclas pressionadas durante a execução. A comunicação com o hardware é realizada por meio de uma conexão WebSocket estabelecida com a ESP32, garantindo a sincronização entre a interface e o instrumento físico.
+
+#### Como executar
+
+Configure o endereço IP da ESP32 utilizado pela conexão WebSocket em app/components/page.tsx:
+
+```
+const ESP_IP = "IP_DA_ESP"; 
+```
+
+No diretório da aplicação, instale as dependências:
+
+```
+npm install
+```
+
+Execute o servidor de desenvolvimento:
+
+```
+npm run dev
+```
+
+Abra http://localhost:3000 no seu navegador para acessar a interface.
+
 ## Descrição do material
 
 ### Lista de materiais:
