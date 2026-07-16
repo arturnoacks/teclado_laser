@@ -5,6 +5,11 @@
 
 O projeto consiste em um teclado multi-instrumental cujo acionamento das teclas ocorre ao interromper um feixe *laser*. De modo geral, o sistema de acionamento pode ser resumido em um conjunto de 24 circuitos emissor comum, que são chaveados de acordo com a resistência de cada LDR (inicialmente saturados pela luz dos *lasers*). Os sinais de saída são recebidos pelo Arduino Mega, que se comunica com o Arduino Uno e o VS1053 para gerar uma saída de áudio via porta P2. Parâmetros diversos como volume e instrumento podem ser visualizados e manipulados por meio de uma interface *web* gerenciada por um ESP32. Adicionalmente, um *encoder* rotativo também pode alterar esses parâmetros.
 
+<img src="/images/projeto_finalizado.jpeg" alt="Piano montado com todas as placas soldadas." width="500">
+
+Figura 1: Projeto finalizado do teclado laser.
+
+
 ## Descrição do código
 
 O projeto é dividido em duas partes principais:
@@ -57,6 +62,11 @@ Após a inicialização, a ESP32 exibirá no monitor serial o seu endereço IP.
 #### Interface web
 
 A interface web permite controlar os principais parâmetros do teclado, como volume, instrumento e oitava, além de exibir, em tempo real, as teclas pressionadas durante a execução. A comunicação com o hardware é realizada por meio de uma conexão WebSocket estabelecida com a ESP32, garantindo a sincronização entre a interface e o instrumento físico.
+
+<img src="/images/interface_web.png" alt="Piano montado com todas as placas soldadas." width="900">
+
+Figura 2: Tela da interface web.
+
 
 #### Como executar
 
@@ -120,7 +130,7 @@ O processo de criação das placas foi feita a partir da criação de apenas uma
 
 <img src="/images/emissor_comum.png" alt="Exemplo de circuito Emissor Comum." width="300" height="200">
 
-Figura 1: Exemplo de circuito Emissor Comum.
+Figura 3: Exemplo de circuito Emissor Comum.
 
 
 Dessa forma, quando o laser é impedido por um obstáculo, o transistor entra em corte e a saída cai. Quando o obstáculo é retirado, o LDR satura e o transistor volta a passar corrente, e a saída volta a 5V. Essa lógica é invertida em software.
@@ -129,22 +139,22 @@ Depois disso, foi utilizado o software KiCad, onde foram feitos 2 projetos, o pr
 
 <img src="/images/projeto_circuito.jpg" alt="Projeto do circuito de 5 notas no KiCad" width="300" height="200">
 
-Figura 2: Projeto do circuito de 5 notas no KiCad.
+Figura 4: Projeto do circuito de 5 notas no KiCad.
 
 Isso foi feito por questão de espaço físico na máquina CnC, que foi utilizada para gravura do circuito na placa. Cada placa foi pintada com uma tinta preta que reage à luz ultra-violeta, de forma que a CnC pudesse disparar um laser forte e secar a tinta no formato do circuito desejado. Depois da gravura, a tinta que não havia sido seca foi retirada com álcool 70%, a placa foi cortada sob medida e por fim imersa em percloreto de ferro, para que o cobre fosse dissolvido.
 
 <img src="/images/circuitoPIC.jpeg" alt="Placa de circuito impresso de 5 notas" width="200" height="200">
 
-Figura 3: Placa de circuito impresso de 5 notas.
+Figura 5: Placa de circuito impresso de 5 notas.
 
 Depois da produção da placa, ela foi limpa e raspada com o lado verde de uma esponja molhada com álcool, e furada manualmente. Então, foram soldados todos os componentes como no projeto desenvolvido. 
 
 <img src="/images/circuito-5-trilha.jpeg" alt="Circuito de 5 notas soldado" width="200" height="200">
 
-Figura 4: Placa de circuito impresso de 5 notas pronta.
+Figura 6: Placa de circuito impresso de 5 notas pronta.
 
 As trilhas de 5V e GND foram soldadas com seus equivalentes em cada placa por meio de fios de cobre envernizados, e todos os fios de sinais das notas foram soldados em um barramento comum, que pudesse ser facilmente utilizado para se conectar por jumpers no Arduino Mega utilizado.
 
 <img src="/images/piano_pronto.jpeg" alt="Piano montado com todas as placas soldadas." width="250" height="200">
 
-Figura 5: Piano montado com todas as placas soldadas.
+Figura 7: Piano montado com todas as placas soldadas.
