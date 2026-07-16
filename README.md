@@ -113,4 +113,38 @@ Conforme o desenvolvimento do projeto, foi percebido que o meio do piano, que é
 Por fim, a última impressão feita foram os anéis de fixação dos *lasers* na parede posterior do teclado. Eles serviram para maior facilidade para colar os lasers, permitindo uma melhor calibragem do que seria possível caso eles fossem colados diretamente no buraco da parede.
 
 Todos esses modelos constam na pasta "models" do repositório. A maioria dos arquivos estão em FCStd, que é o formato padrão do software FreeCAD utilizado para modelagem 3D das peças.
+
 ## Projetos de Placas
+
+O processo de criação das placas foi feita a partir da criação de apenas uma nota, que foi replicada 24 vezes para a completude do piano. Cada uma das notas foi feita à partir de um circuito Emissor Comum, como o da imagem abaixo, de forma que o emissor do transistor fosse conectado direto ao terra, R1 = 4.7k Ohms, Rc = 10k Ohms e R2 fosse um LDR, que possui entre 50 e 100 Ohms quando saturado, ou seja, com o laser apontado. 
+
+<img src="/images/emissor_comum.png" alt="Exemplo de circuito Emissor Comum." width="300" height="200">
+
+Figura 1: Exemplo de circuito Emissor Comum.
+
+
+Dessa forma, quando o laser é impedido por um obstáculo, o transistor entra em corte e a saída cai. Quando o obstáculo é retirado, o LDR satura e o transistor volta a passar corrente, e a saída volta a 5V. Essa lógica é invertida em software.
+
+Depois disso, foi utilizado o software KiCad, onde foram feitos 2 projetos, o primeiro sendo a junção de 5 notas e o segundo de 7 notas. 
+
+<img src="/images/projeto_circuito.jpg" alt="Projeto do circuito de 5 notas no KiCad" width="300" height="200">
+
+Figura 2: Projeto do circuito de 5 notas no KiCad.
+
+Isso foi feito por questão de espaço físico na máquina CnC, que foi utilizada para gravura do circuito na placa. Cada placa foi pintada com uma tinta preta que reage à luz ultra-violeta, de forma que a CnC pudesse disparar um laser forte e secar a tinta no formato do circuito desejado. Depois da gravura, a tinta que não havia sido seca foi retirada com álcool 70%, a placa foi cortada sob medida e por fim imersa em percloreto de ferro, para que o cobre fosse dissolvido.
+
+<img src="/images/circuitoPIC.jpeg" alt="Placa de circuito impresso de 5 notas" width="300" height="200">
+
+Figura 3: Placa de circuito impresso de 5 notas.
+
+Depois da produção da placa, ela foi limpa e raspada com o lado verde de uma esponja molhada com álcool, e furada manualmente. Então, foram soldados todos os componentes como no projeto desenvolvido. 
+
+<img src="/images/circuito-5-trilha.jpeg" alt="Circuito de 5 notas soldado" width="300" height="200">
+
+Figura 4: Placa de circuito impresso de 5 notas pronta.
+
+As trilhas de 5V e GND foram soldadas com seus equivalentes em cada placa por meio de fios de cobre envernizados, e todos os fios de sinais das notas foram soldados em um barramento comum, que pudesse ser facilmente utilizado para se conectar por jumpers no Arduino Mega utilizado.
+
+<img src="/images/piano_pronto.jpeg" alt="Piano montado com todas as placas soldadas." width="300" height="200">
+
+Figura 5: Piano montado com todas as placas soldadas.
