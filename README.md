@@ -63,7 +63,7 @@ Após a inicialização, a ESP32 exibirá no monitor serial o seu endereço IP.
 
 A interface web permite controlar os principais parâmetros do teclado, como volume, instrumento e oitava, além de exibir, em tempo real, as teclas pressionadas durante a execução. A comunicação com o hardware é realizada por meio de uma conexão WebSocket estabelecida com a ESP32, garantindo a sincronização entre a interface e o instrumento físico.
 
-<img src="/images/interface_web.png" alt="Piano montado com todas as placas soldadas." width="900">
+<img src="/images/interface_web.png" alt="Piano montado com todas as placas soldadas." width="600">
 
 Figura 2: Tela da interface web.
 
