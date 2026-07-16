@@ -90,7 +90,7 @@ Abra http://localhost:3000 no seu navegador para acessar a interface.
 	 - Shield Arduino VS1053
  - **Componentes Eletrônicos:**
 	 - 24 Módulos Diodo Laser 5V
-	 - 24 Resistores X, Y
+	 - 24 Resistores 10k, 4.7k
 	 - 24 Transistores BC547
 	 - 24 LDR 5mm
 	 - 1 Encoder Rotativo
@@ -133,18 +133,18 @@ Figura 2: Projeto do circuito de 5 notas no KiCad.
 
 Isso foi feito por questão de espaço físico na máquina CnC, que foi utilizada para gravura do circuito na placa. Cada placa foi pintada com uma tinta preta que reage à luz ultra-violeta, de forma que a CnC pudesse disparar um laser forte e secar a tinta no formato do circuito desejado. Depois da gravura, a tinta que não havia sido seca foi retirada com álcool 70%, a placa foi cortada sob medida e por fim imersa em percloreto de ferro, para que o cobre fosse dissolvido.
 
-<img src="/images/circuitoPIC.jpeg" alt="Placa de circuito impresso de 5 notas" width="300" height="200">
+<img src="/images/circuitoPIC.jpeg" alt="Placa de circuito impresso de 5 notas" width="200" height="200">
 
 Figura 3: Placa de circuito impresso de 5 notas.
 
 Depois da produção da placa, ela foi limpa e raspada com o lado verde de uma esponja molhada com álcool, e furada manualmente. Então, foram soldados todos os componentes como no projeto desenvolvido. 
 
-<img src="/images/circuito-5-trilha.jpeg" alt="Circuito de 5 notas soldado" width="300" height="200">
+<img src="/images/circuito-5-trilha.jpeg" alt="Circuito de 5 notas soldado" width="200" height="200">
 
 Figura 4: Placa de circuito impresso de 5 notas pronta.
 
 As trilhas de 5V e GND foram soldadas com seus equivalentes em cada placa por meio de fios de cobre envernizados, e todos os fios de sinais das notas foram soldados em um barramento comum, que pudesse ser facilmente utilizado para se conectar por jumpers no Arduino Mega utilizado.
 
-<img src="/images/piano_pronto.jpeg" alt="Piano montado com todas as placas soldadas." width="300" height="200">
+<img src="/images/piano_pronto.jpeg" alt="Piano montado com todas as placas soldadas." width="250" height="200">
 
 Figura 5: Piano montado com todas as placas soldadas.
