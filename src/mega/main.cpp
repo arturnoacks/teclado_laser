@@ -14,7 +14,6 @@ byte pin_to_note(uint8_t pin){
     return constrain(int(pin_to_note_array[pin-22] + (get_octave() * 12)), 0, 127);
 }
 
-
 void setup(){
     Serial.begin(9600);
     Serial1.begin(9600);
